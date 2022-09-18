@@ -1,23 +1,32 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class Newsitem extends Component {
-   
-  render() {
-    let {title, description ,imageUrl ,newsurl,Author, Date}=this.props;
-    return (
-      <div className='my-3'>
-                <div className="card" style={{width:" 18rem"}}>
-            <img src={imageUrl?imageUrl:"https://images.hindustantimes.com/img/2022/08/16/1600x900/2172b890-1c86-11ed-bbe8-9cf972e52f11_1660639896429_1660639896429_1660639904666_1660639904666.jpg"} className="card-img-top" alt="..."/>
-            <div className="card-body">
-                <h5 className="card-title">{title}...</h5>
-                <p className="card-text">{description}...</p>
-                <p className="card-text"><small className="text-muted">By {!Author?"unknown":Author} on {Date}</small></p>
-                <a href={newsurl} target="_blank" className="btn btn-sm btn-dark">Read More</a>
+const Newsitem = (props)=> {
+        let { title, description, imageUrl, newsUrl, Author, Date} = props;
+        return (
+            <div className="my-3">
+                <div className="card  h-200">
+                    <div style={{
+                        height:"20rem",
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        position: 'absolute',
+                        right: '0',
+                        
+                    }
+                    }> 
+                        {/* <span className="badge rounded-pill bg-danger"> {source} </span> */}
+                    </div>
+                    <img src={!imageUrl ? "https://fdn.gsmarena.com/imgroot/news/21/08/xiaomi-smart-home-india-annoucnements/-476x249w4/gsmarena_00.jpg" : imageUrl} className="card-img-top" style={{height:"15rem"}} alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">{title}  </h5>
+                        <p className="card-text">{description}</p>
+                        <p className="card-text"><small className="text-muted">By {!Author?"unknown":Author} on {Date}</small></p>
+                        <a rel="noreferrer" href={newsUrl} target="_blank" className="btn btn-sm btn-dark">Read More</a>
+                    </div>
+                </div>
             </div>
-            </div>
-      </div>
-    )
-  }
+        )
+     
 }
 
 export default Newsitem
